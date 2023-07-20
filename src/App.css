@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  margin: 0;
+  background: #091F25 fixed;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.calculator-grid{
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: repeat(5, 8.5rem); /*(4, 8.5rem)*/
+  grid-template-rows: minmax(7rem, auto)repeat(5,6rem) minmax(7rem,auto); /*repeat 4*/
+
+  /* way to center an element on any screen size   */
+  position: absolute; 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.calculator-grid > button{
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  border: 1px solid #777777;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75); /*rgba(255, 255, 255, 0.75)*/
+  width: 100%;
+  height: 100%;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  transition: transform 2.33s;
+}
+
+.calculator-grid > button:active {
+  transform: scale(0.65);
+}
+
+.calculator-grid > button:hover{
+  background-color: rgba(255, 255, 255, 0.9)
+}
+.calculator-grid > button:focus{
+  background-color: #D8C3B5; /*  rgba(255, 255, 255, 0.9)*/
+}
+
+.span-two{
+  grid-column: span 2;
+}
+
+.output{
+  grid-column: 1/ -1;
+  background-color: rgba(0,0,0,.75);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: .75rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  grid-row: 1;
+}
+
+.output .previous-operand {
+  color: rgba(255,255,255,.75);
+  font-size: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.output .current-operand {
   color: white;
+  font-size: 2.5rem;
+  font-family: 'Orbitron', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.switch_mode .highlight1 {
+  background-color: orange;
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.switch_mode .highlight2 {
+  background-color: orange;
+  color: bold black;
 }
